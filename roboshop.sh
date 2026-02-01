@@ -34,6 +34,8 @@ do
    --output text
  )
 fi
+
+echo "IP ADDRESS  :$IP"
  done
 
 	
