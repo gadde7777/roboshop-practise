@@ -26,7 +26,7 @@ do
     --output text
      )
   else
-  
+
    IP=$
  (
    aws ec2 describe-instances \
@@ -35,8 +35,7 @@ do
    --output text
  )
 fi
-
-    echo "IP ADDRESS  : $IP"
+      ## echo "IP ADDRESS  : $IP"
  done
 
 	
