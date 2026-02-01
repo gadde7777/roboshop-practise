@@ -12,7 +12,7 @@ LOGS_FILE="$LOGS_FOLDER/$0.log"
 
 echo "what is userid :$USERID"
 
-if [ $USERID -ne 0 ]; then
+if [$USERID -ne 0]; then
 echo "please run script with root user"
 exit 1
 fi
@@ -35,7 +35,7 @@ VALIDATE $? "Copying Mongo repo"
 dnf install mongodb-org -y &>> $LOGS_FILE
 VALIDATE $? "Install Mongo DB  Server"
 
-systemctl enable mongod &>> $LOGS_FILE
+systemctl enable mongod &>> $LOGS_FILEs
 VALIDATE $? "Enable MongoDB"
 
 systemctl start mongod 
