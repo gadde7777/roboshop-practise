@@ -7,13 +7,11 @@ N="\e[0m"
 
 
 USER_ID=$(id -u)
-LOGS_FOLDER="/var/log/shell-script"
+LOGS_FOLDER="/var/log/shell-roboshop"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 
-##echo "what is userid :$USERID"
-
-if [$USERID -ne 0]; then
-echo "please run script with root user"
+if [ $USERID -ne 0 ]; then
+echo -e "$R please run script with root user $N" | tee -a $LOGS_FILE
 exit 1
 fi
 
@@ -41,7 +39,7 @@ VALIDATE $? "Enable MongoDB"
 systemctl start mongod
 VALIDATE $? "Start MongoDB"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf'
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 VALIDATE $? "Allowing Remote Connections"
 
 systemctl restart mongod
