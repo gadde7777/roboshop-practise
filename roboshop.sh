@@ -26,6 +26,7 @@ do
     --output text
      )
   else
+  
    IP=$
  (
    aws ec2 describe-instances \
