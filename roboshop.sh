@@ -8,7 +8,7 @@ SG_ID="sg-0d48b1166075f71bf"
 for instance in $@
 
 do
- instance_id=$( 
+ INSTANCEID=$( 
     aws ec2 run-instances \
  --image-id $AMI_ID \
  --instance-type t3.micro \
@@ -21,7 +21,7 @@ do
  
  IP=$(
     aws ec2 describe-instances \
-    --instance-ids $instance_id \
+    --instance-ids $INSTANCEID \
     --query "Reservations[].Instances[].PublicIpAddress" \
     --output text
      )
@@ -29,13 +29,13 @@ do
    IP=$
  (
    aws ec2 describe-instances \
-   --instance-ids $instance_id \
+   --instance-ids $INSTANCEID \
    --query "Reservations[].Instances[].PrivateIpAddress" \
    --output text
  )
 fi
 
-echo "IP ADDRESS  :$IP"
+echo "IP ADDRESS  : $IP"
  done
 
 	
