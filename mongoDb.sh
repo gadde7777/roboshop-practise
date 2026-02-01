@@ -10,7 +10,7 @@ USER_ID=$(id -u)
 LOGS_FOLDER="/var/log/shell-script"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 
-echo "what is userid :$USERID"
+##echo "what is userid :$USERID"
 
 if [$USERID -ne 0]; then
 echo "please run script with root user"
@@ -35,10 +35,10 @@ VALIDATE $? "Copying Mongo repo"
 dnf install mongodb-org -y &>> $LOGS_FILE
 VALIDATE $? "Install Mongo DB  Server"
 
-systemctl enable mongod &>> $LOGS_FILEs
+systemctl enable mongod &>> $LOGS_FILE
 VALIDATE $? "Enable MongoDB"
 
-systemctl start mongod 
+systemctl start mongod
 VALIDATE $? "Start MongoDB"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf'
