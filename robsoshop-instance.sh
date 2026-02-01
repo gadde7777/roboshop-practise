@@ -6,7 +6,7 @@ SG_ID="sg-0d48b1166075f71bf"
 for instance in $@
 
 do
-instance-id=$(aws ec2 run-instances \
+INSTANCE_ID=$(aws ec2 run-instances \
     --image-id $AMI_ID \
     --instance-type t3.micro \
 	--security-group-ids $SG_ID \
@@ -15,16 +15,17 @@ instance-id=$(aws ec2 run-instances \
     --output text)
 
   if [ $instance == "frontend" ]; then
+
    IP=$(
     aws ec2 describe-instances \
-     --instance-ids  $instance-id \
+     --instance-ids  $INSTANCE_ID \
      --query 'Reservations[].Instances[].PublicIpAddress' \
      --output text
    )
   else
   IP=$(
       aws ec2 describe-instances \
-      --instance-ids $instance-id \
+      --instance-ids $INSTANCE_ID \
       --query 'Reservations[].Instances[].PrivateIpAddress' \
      --output text
   )
