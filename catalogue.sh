@@ -42,10 +42,11 @@ if [ $? -ne 0 ]; then
     VALIDATE $? "Creating System User"
 else
     echo -e "Useralready exists $Y Skipping $N"
+fi
 
 
 mkdir -p /app
 VALIDATE $? "Creating Directory"
 
-curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
-VALIDATE $? "Downloading Code"
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
+VALIDATE $? "Download Code"
