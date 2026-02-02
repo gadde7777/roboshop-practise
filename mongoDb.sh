@@ -11,9 +11,8 @@ LOGS_FOLDER="/var/log/shell-roboshop"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 
 if [ $USERID -ne 0 ]; then
-
-echo -e "$R please run script with root user $N" | tee -a $LOGS_FILE
-exit 1
+    echo -e "$R please run script with root user $N" | tee -a $LOGS_FILE
+    exit 1
 fi
 
 mkdir -p $LOGS_FOLDER
