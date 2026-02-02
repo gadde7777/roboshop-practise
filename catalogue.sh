@@ -49,8 +49,3 @@ VALIDATE $? "Creating Directory"
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip 
 VALIDATE $? "Downloading Code"
-##cd /app 
-##unzip /tmp/catalogue.zip
-
-##cd /app 
-##npm install 
