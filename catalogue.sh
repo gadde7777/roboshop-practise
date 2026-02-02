@@ -75,3 +75,13 @@ VALIDATE $? "Enable Catalogue Service"
 
 systemctl start catalogue
 VALIDATE $? "Start Catalogue Service"
+
+cp mongo.repo $SCRIPT_DIR/etc/yum.repos.d/mongo.repo
+VALIDATE $? "Copying Mongo Repo"
+
+dnf install mongodb-mongosh -y
+VALIDATE $? "Copying Mongo Repo"
+
+mongosh --host mongodb.daws88straining.online </app/db/master-data.js
+
+mongosh --host mongodb.daws88straining.online
