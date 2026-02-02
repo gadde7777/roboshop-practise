@@ -6,11 +6,11 @@ Y="\e[33m"
 N="\e[0m"
 
 
-USER_ID=$(id -u)
+USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-roboshop"
 LOGS_FILE="$LOGS_FOLDER/$0.log"
 
-if [ $USERID -ne 0 ]; then
+if [ $USERID -ne 0]; then
 
 echo -e "$R please run script with root user $N" | tee -a $LOGS_FILE
 exit 1
