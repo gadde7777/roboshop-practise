@@ -92,4 +92,4 @@ echo -e "Products already loaded...$R Skipping $N"
 
 fi
 systemctl restart catalogue
-VALIDATE $? "Restart catalogue
+VALIDATE $? "Restart catalogue"
