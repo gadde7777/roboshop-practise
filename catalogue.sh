@@ -80,8 +80,16 @@ cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "Copying Mongo Repo"
 
 dnf install mongodb-mongosh -y
-VALIDATE $? "Copying Mongo Repo"
+
+INDEX=mongosh mongodb.daws88straining.online:27017 --eval 'db.getMongo().getDBNames().indexOf("catalogue")' --quiet
+
+if (INDEX :le 0); then
 
 mongosh --host mongodb.daws88straining.online </app/db/master-data.js
+VALIDATE $? "Loading Products"
+else
+echo -e "Products already loaded...$R Skipping $N"
 
-mongosh --host mongodb.daws88straining.online
+fi
+systemctl restart catalogue
+VALIDATE $? "Restart catalogue
