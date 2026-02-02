@@ -4,6 +4,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
+SCRIPT_DIR=$PWD
 
 USERID=$(id -u)
 LOGS_FOLDER="/var/log/shell-roboshop"
@@ -54,13 +55,16 @@ VALIDATE $? "Download Code"
 cd /app 
 VALIDATE $? "Moving to App Directory"
 
+rm -rf /app/*
+VALIDATE $? "remove existing code"
+
 unzip /tmp/catalogue.zip
 VALIDATE $? "Unzip Cataogue Code"
 
 npm install 
 VALIDATE $? "Installing Dependencies"
 
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
 VALIDATE $? "Created Systemctl service"
 
 systemctl daemon-reload
